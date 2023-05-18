@@ -10,4 +10,7 @@ darkModeButton.addEventListener("click", function() {
 });
 
 alert("Ignacio Rodriguez Blanco 1ºDAM,anime");
+function mostrarAlerta(){
+  alert("Ignacio Rodriguez Blanco 1ºDAM,anime");
+}
 
