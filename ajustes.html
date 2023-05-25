@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <link rel="stylesheet" type="text/css" href="estilos.css">
+    <script src="script.js"></script>
+    <script src="https://kit.fontawesome.com/4066c073b8.js" crossorigin="anonymous"></script>
+    <script>
+        // Esperar a que se cargue completamente el contenido de la página
+        document.addEventListener('DOMContentLoaded', function() {
+            // Verificar si el modo día/noche está almacenado en el Web Storage
+            const modoGuardado = localStorage.getItem('modo');
+    
+            // Aplicar el modo día/noche guardado
+            if (modoGuardado === 'noche') {
+                document.body.classList.add('modo-noche');
+            }
+        });
+        
+    </script>
+ 
+
+     
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="index.html">Index </a></li>
+                <li><a href="pagina1.html">Pagina 1</a></li>
+                <li><a href="pagina2.html">Pagina 2</a></li>
+                <li><a href="ajustes.html">Ajustes</a></li>
+                <li>
+                    <button onclick="abrirModal()">Abrir Ventana Modal</button>
+                    <!-- Ventana Modal -->
+                    <div id="modal" class="modal">
+                        <div class="modal-content">
+                            <span class="close" onclick="cerrarModal()">&times;</span>
+                            <p>Ignacio Rodriguez Blanco 1o DAM 
+                                a continuacion enumerare la localizacion de los elementos pedidos en la rubrica:  
+                              </p>
+                              <p>1 entregado el dia 25/5</p>
+                              <p>2 espero que la url lleve a index.html</p>
+                              <p>3 menu global que esta igual en todas las paginas</p>
+                              <p>4 pagina inicio(index.html) con una explicacion general, pagina 1 con xml pagina 2 con imagenes tematica anime y pagina ajustes(mas de 3 paginas)</p>
+                              <p>5 pagina de ajustes con 3 elementos que se modifican en todas las paginas, el color de la fuente, la fuente como tal, modo dia y modo noche</p>
+                              <p>6 Si se esta viendo esto, esto es el modal</p>
+                              <p>7 La familia XML se utiliza en la pagina 1</p>
+                              <p>8 Lectura Modificacion y consola en ajustes, y por consola se hacen recomendaciones al cambiar color de fuente a colores molestos y se saluda al usuario con el nombre que se ha identificado</p>
+                              <p>9 Elementos de entrada de datos en ajustes (2 select y 1 input )</p>
+                              <p>10 Nombre del usuario en la esquina del viewport superior derecha debajo del menu, si no se identifica pone "sin identificar"</p>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+            <div id="texto-mostrado" class="texto-mostrado"></div>
+        </nav>
+    </header>
+
+    <main>
+        <h1>Ajustes</h1>
+
+        <label>
+            <button onclick="cambiarModo()">
+            cambiar modo a noche/dia
+            <i class="fa-solid fa-moon"></i>
+            </button>
+        </label>
+       
+
+
+
+
+
+
+
+        <input type="text" id="texto-input" placeholder="Como te llamas">
+        <button onclick="almacenarEnSessionStorage(),mostrarTextoAlmacenado()">Guardar</button>
+
+        
+        <div id="texto-mostrado"></div>
+        <select onchange="myFunction(this);" size="13">
+            <option>Georgia</option>
+            <option>Palatino Linotype</option>
+            <option>Book Antiqua</option>
+            <option>Times New Roman</option>
+            <option>Arial</option>
+            <option>Helvetica</option>
+            <option>Arial Black</option>
+            <option>Impact</option>
+            <option>Lucida Sans Unicode</option>
+            <option>Tahoma</option>
+            <option>Comic Sans MS</option>
+            <option>Courier New</option>
+            <option>Lucida Console</option>
+          </select>
+
+          <label for="colores">elige un color:</label>
+          <select onchange="cambiarColor(this);" name="colores" id="colores">
+            <option value=""></option>
+            <option value="red">rojo</option>
+            <option value="blue">azul</option>
+            <option value="black">negro</option>
+            <option value="white">blanco</option>
+          </select>
+    </main>
+    <script>
+        cambiarFuente();
+        mostrarTextoAlmacenado();
+        decirHola();
+        
+            function myFunction(selectTag) {
+              var listValue = selectTag.options[selectTag.selectedIndex].text;
+              document.body.style.fontFamily = listValue;
+              localStorage.setItem('fuente',listValue);
+            }
+            function cambiarColor(selectElement) {
+                
+                var color = selectElement.value;
+    
+                
+                document.body.style.color = color;
+                
+                
+                if(localStorage.getItem('modo')==='dia'){
+                    if(color==='white'){
+                        alert('las letras son iguales que el fondo y no es recomendable');
+                        console.log('las letras son iguales que el fondo y no es recomendable');
+                    }
+                    
+                }
+                if(localStorage.getItem('modo')==='noche'){
+                    if(color==='blue'){
+                      alert('las letras contrastan con el fondo y no es recomendable');  
+                      console.log('las letras contrastan con el fondo y no es recomendable');
+                    }
+                    if(color==='black'){
+                        alert('las letras son de tonalidad similar al fondo y no es recomendable'); 
+                        console.log('las letras son de tonalidad similar al fondo y no es recomendable'); 
+                      }
+                    
+                }
+            }
+            
+    </script>
+</body>
+</html>
